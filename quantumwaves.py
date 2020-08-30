@@ -32,8 +32,8 @@ fps = 30
 
 collapse_interval = (fps*sec)/2#/3 #2 * fps
 
-record = False
-#record = True
+#record = False
+record = True
 
 #do_smoothing = False
 do_smoothing = True
@@ -49,7 +49,7 @@ if len(sys.argv) >= 2:
 name = 'decay_movement9_follow'
 name = name + ('_' + layer) if layer != '' else name
 
-folder = Path('C:/frames') / name
+folder = Path.home() / name
 
 res = np.array((1920, 1080))
 #res = np.array((3840, 2160))
@@ -583,8 +583,8 @@ def ffmpeg(folder, name, FPS):
     if not record:
         return
 
-    dest = Path('C:/')
-    dest = dest / Path(f'Veritasium/ManyWorlds/{name}.mov')
+    dest = Path.home()
+    dest = dest / Path(f'{name}.mov')
 
     convert_cmd = (f'''ffmpeg -f image2 -framerate {FPS}'''
                        f''' -i {str(folder / name)}_%d.png'''
